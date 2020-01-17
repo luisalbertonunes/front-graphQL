@@ -1,0 +1,72 @@
+interface Node {
+  id: ID!
+}
+
+type Todo implements Node {
+  id: ID!
+  content: String!
+  isCompleted: Boolean!
+  tags: [Tags]
+}
+
+type Tags {
+  name: String!
+}
+
+
+type Query {
+  allTodos: [Todo]!
+  Todo(id: ID!): Todo
+  node(id: ID!): Node
+}
+
+type Mutation {
+  createTodo(input: CreateTodoInput!): CreateTodoPayload
+  updateTodo(input: UpdateTodoInput!): UpdateTodoPayload
+  deleteTodo(input: DeleteTodoInput!): DeleteTodoPayload
+}
+
+input CreateTodoInput {
+  content: String!
+  isCompleted: Boolean!
+  tags: [TagsInput]
+  clientMutationId: String!
+}
+
+input UpdateTodoInput {
+  id: ID!
+  content: String!
+  isCompleted: Boolean!
+  tags: [TagsInput]
+  clientMutationId: String!
+}
+
+input DeleteTodoInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+input TagsInput {
+  name:String!
+}
+
+type CreateTodoPayload {
+  id: ID,
+  content: String,
+  isCompleted: Boolean,
+  tags: [Tags],
+  clientMutationId: String!
+}
+
+type UpdateTodoPayload {
+  id: ID,
+  content: String,
+  isCompleted: Boolean,
+  tags: [Tags],
+  clientMutationId: String!
+}
+
+type DeleteTodoPayload {
+  id: ID,
+  clientMutationId: String!
+}

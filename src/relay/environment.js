@@ -2,8 +2,8 @@ import {
     Environment,
     Network,
     RecordSource,
-    Store
-} from 'relay-compiler';
+    Store,
+} from 'relay-runtime';
 
 function fetchQuery(
     operation,

@@ -9,7 +9,7 @@ function App() {
     <QueryRender
       environment={environment}
       query={graphql`
-        query {
+        query AppQuery{
           allTodos{
             id,
             content,

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e9a55dcd5c7a93538eb9ef52258edac4
+ * @relayHash 5c6c6dae6fbf7349e208196337454308
  */
 
 /* eslint-disable */
@@ -14,10 +14,6 @@ export type AppQueryResponse = {|
   +allTodos: $ReadOnlyArray<?{|
     +id: string,
     +content: string,
-    +isCompleted: boolean,
-    +tags: ?$ReadOnlyArray<?{|
-      +name: string
-    |}>,
   |}>
 |};
 export type AppQuery = {|
@@ -32,10 +28,6 @@ query AppQuery {
   allTodos {
     id
     content
-    isCompleted
-    tags {
-      name
-    }
   }
 }
 */
@@ -64,31 +56,6 @@ var v0 = [
         "name": "content",
         "args": null,
         "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "isCompleted",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "tags",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "Tags",
-        "plural": true,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "name",
-            "args": null,
-            "storageKey": null
-          }
-        ]
       }
     ]
   }
@@ -113,11 +80,11 @@ return {
     "operationKind": "query",
     "name": "AppQuery",
     "id": null,
-    "text": "query AppQuery {\n  allTodos {\n    id\n    content\n    isCompleted\n    tags {\n      name\n    }\n  }\n}\n",
+    "text": "query AppQuery {\n  allTodos {\n    id\n    content\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '87e97940d0f03e077e285c8ccf3644d7';
+(node/*: any*/).hash = '4e127f2ec636d5b84c24d6d07a600bbf';
 module.exports = node;

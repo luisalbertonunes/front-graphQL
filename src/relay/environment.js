@@ -8,13 +8,12 @@ import {
 function fetchQuery(
     operation,
     variables,
-    cacheConfig,
-    uploadables,
 ) {
-    return fetch('http://localhost:4000/', {
+    return fetch('http://localhost:4000', {
         method: 'POST',
         headers: {
-            'content-type': 'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             query: operation.text,

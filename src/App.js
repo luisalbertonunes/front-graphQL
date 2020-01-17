@@ -1,51 +1,37 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { graphql, QueryRender } from 'react-relay';
+import { graphql, QueryRenderer } from 'react-relay';
 import environment from './relay/environment';
 
 function App() {
   return (
-    <QueryRender
+    <QueryRenderer
       environment={environment}
       query={graphql`
-        query AppQuery{
-          allTodos{
+       query AppQuery {
+        allTodos{
             id,
-            content,
-            isCompleted
-            tags {
-              name
-            }
+            content
           }
         }
       `}
       variables={{}}
       render={({ error, props }) => {
+        console.log(props);
+
+
         if (error) {
           return <div>Error!</div>
         }
         if (!props) {
           return <div>Loading</div>
         }
-        return <div>Conteudo: {props.allTodos.content}</div>
+        const { allTodos } = props;
+        console.log(allTodos);
+
+        return allTodos.map(m => <div key={m.id}>Conteudo: {m.content}</div>)
       }} />
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
   );
 }
 
